@@ -32,6 +32,7 @@ sb = st.sidebar
 sb.header("Input")
 upload = sb.file_uploader("Flight log", type=["bin", "log", "csv"])
 samples = sorted(glob.glob(os.path.join("sample_logs", "*")))
+samples = ["sample_flight.csv"] if os.path.exists("sample_flight.csv") else samples
 if samples and sb.button("Try a sample flight"):
     st.session_state["sample"] = samples[0]
 if upload is not None:
